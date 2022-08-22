@@ -38,8 +38,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+//!
+
 //! alert с предупреждением о наявности контакта
 
 //! old --------------------------------------------
+
+//! записываю contacts в хранилище localStorage
+
+//! перенесен в ContactForm
 
 //! принимаем props от ContactForm contacts={contacts} из App
