@@ -46,6 +46,19 @@ export class ContactForm extends Component {
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('ContactForm componentDidUpdate'); //!
+  //   console.log("ContactForm prevProps: ", prevProps); //!
+
+  //   const ContactFormPrevState = prevState;
+  //   console.log("ContactForm PrevState: ", ContactFormPrevState); //!
+
+  //   const ContactFormNextState = this.state;
+  //   console.log("ContactForm NextState: ", ContactFormNextState); //!
+  // }
+
+
+
   handleChange = event => {
     // console.log(event.currentTarget); //!
     // console.log(event.currentTarget.name); //!
@@ -95,6 +108,8 @@ export class ContactForm extends Component {
     } else {
       // console.log("else name:", name); //!
       contacts.push({ id: nanoid(), name: name, number: number, });
+      //! записываю contacts в хранилище localStorage 2-ой вариант:
+      // localStorage.setItem('contacts', JSON.stringify(contacts));
       }
     
     this.props.onSubmit(this.state, this.props.contacts);

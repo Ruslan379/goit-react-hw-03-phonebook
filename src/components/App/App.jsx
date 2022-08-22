@@ -54,7 +54,7 @@ export class App extends Component {
 
 
   componentDidMount() {
-    // console.log('App componentDidMount'); //!
+    console.log('App componentDidMount'); //!
 
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
@@ -66,24 +66,25 @@ export class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // console.log('App componentDidUpdate'); //!
+    // console.log("App prevProps: ", prevProps); //!
 
     const prevContacts = prevState.contacts;
-    // console.log("prevContacts: ", prevContacts); //!
+    // console.log("App prevContacts: ", prevContacts); //!
 
     const nextContacts = this.state.contacts;
-    // console.log("nextContacts: ", nextContacts); //!
+    // console.log("App nextContacts: ", nextContacts); //!
 
 
     if (nextContacts !== prevContacts) {
-      // console.log('Обновилось поле contacts, записываю contacts в хранилище'); //!
+      // console.log('Обновилось App поле contacts, записываю contacts в хранилище'); //!
       localStorage.setItem('contacts', JSON.stringify(nextContacts));
     }
   }
 
   formSubmitHandler = (newState = {}, newContacts) => {
     // console.log("newState: ", newState); //!
-    console.log("newContacts: ", newContacts); //!
-    console.log("this.state: ", this.state); //!
+    // console.log("newContacts: ", newContacts); //!
+    // console.log("this.state.contacts: ", this.state.contacts); //!
     // console.log("this.state.contacts: ", this.state.contacts); //!
 
     // this.setState(prevState => ({
@@ -92,7 +93,7 @@ export class App extends Component {
 
     this.setState({ contacts: newContacts });
 
-    //! записываю contacts в хранилище localStorage
+    //! записываю contacts в хранилище localStorage 1-ый вариант:
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   };
 
