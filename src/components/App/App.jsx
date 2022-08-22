@@ -54,7 +54,7 @@ export class App extends Component {
 
 
   componentDidMount() {
-    console.log('App componentDidMount'); //!
+    // console.log('App componentDidMount'); //!
 
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
@@ -85,7 +85,7 @@ export class App extends Component {
     // console.log("newState: ", newState); //!
     // console.log("newContacts: ", newContacts); //!
     // console.log("this.state.contacts: ", this.state.contacts); //!
-    // console.log("this.state.contacts: ", this.state.contacts); //!
+  
 
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.push({id: 'id-5', name: 'Ruslan Fate', number: '777-77-77'}),

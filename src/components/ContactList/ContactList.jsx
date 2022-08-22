@@ -20,8 +20,7 @@ export const ContactList = ({ visibleContacts, onDeleteTodo }) => (
           className={css.ContactListText}>{name}:
           <span
             className={css.ContactListNumber}
-          >
-            {number}
+          > {number}
           </span>
         </p>
         <button
