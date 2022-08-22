@@ -86,16 +86,32 @@ export class App extends Component {
     // console.log("newContacts: ", newContacts); //!
     // console.log("this.state.contacts: ", this.state.contacts); //!
   
+    
 
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.push({id: 'id-5', name: 'Ruslan Fate', number: '777-77-77'}),
     // }));
 
+    //! Обновление state.contacts - ВАЖНО!!!
     this.setState({ contacts: newContacts });
+
+
+    // this.setState(function (prevState, props) {
+    //   // console.log("prevState: ", prevState);
+    //   console.log("prevState.contacts: ", prevState.contacts);
+    //   // console.log("props: ", props);  
+    //   const ps = prevState.contacts;
+    //   const r = { id: 'id-5', name: 'Ruslan Fate', number: '111-11-11' };
+
+    //   return {
+    //     contacts: ps.push(r)
+    //   };
+    // });
 
     //! записываю contacts в хранилище localStorage 1-ый вариант:
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   };
+
 
 
   //! перенесен в ContactForm
