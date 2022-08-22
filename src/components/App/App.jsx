@@ -53,10 +53,37 @@ export class App extends Component {
   // contactInputId = nanoid();
 
 
+  componentDidMount() {
+    // console.log('App componentDidMount'); //!
+
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('App componentDidUpdate'); //!
+
+    const prevContacts = prevState.contacts;
+    // console.log("prevContacts: ", prevContacts); //!
+
+    const nextContacts = this.state.contacts;
+    // console.log("nextContacts: ", nextContacts); //!
+
+
+    if (nextContacts !== prevContacts) {
+      // console.log('Обновилось поле contacts, записываю contacts в хранилище'); //!
+      localStorage.setItem('contacts', JSON.stringify(nextContacts));
+    }
+  }
+
   formSubmitHandler = (newState = {}, newContacts) => {
     // console.log("newState: ", newState); //!
-    // console.log("newContacts: ", newContacts); //!
-    // console.log("this.state: ", this.state); //!
+    console.log("newContacts: ", newContacts); //!
+    console.log("this.state: ", this.state); //!
     // console.log("this.state.contacts: ", this.state.contacts); //!
 
     // this.setState(prevState => ({
@@ -64,7 +91,10 @@ export class App extends Component {
     // }));
 
     this.setState({ contacts: newContacts });
-  }
+
+    //! записываю contacts в хранилище localStorage
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  };
 
 
   //! перенесен в ContactForm
