@@ -80,6 +80,11 @@ export class ContactForm extends Component {
 
 
 
+  OnPush = (name1, number1) => {
+    this.props.contacts.push({ id: nanoid(), name: name1, number: number1, });
+  };
+
+
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state; 
@@ -100,20 +105,20 @@ export class ContactForm extends Component {
 
     //! alert с предупреждением о наявности контакта
     // console.log("contacts[0]: ", contacts[0]); //!
-
     if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
       // console.log("if name:", name); //!
         alert(`${name} is already in contacts.`);
         return;
     } else {
       // console.log("else name:", name); //!
-      contacts.push({ id: nanoid(), name: name, number: number, });
+      // contacts.push({ id: nanoid(), name: name, number: number, });
+      this.OnPush(name, number);
       //! записываю contacts в хранилище localStorage 2-ой вариант:
       // localStorage.setItem('contacts', JSON.stringify(contacts));
       }
     
     this.props.onSubmit(this.state, this.props.contacts);
-
+    
     // console.log("contacts[0].name: ", contacts[0].name); //!
 
     this.reset();
@@ -174,7 +179,6 @@ export class ContactForm extends Component {
             Add contact
           </button>
         </form>
-      
     );
   }
 }
