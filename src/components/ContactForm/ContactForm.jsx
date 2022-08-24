@@ -80,49 +80,60 @@ export class ContactForm extends Component {
 
 
 
-  OnPush = (name1, number1) => {
-    this.props.contacts.push({ id: nanoid(), name: name1, number: number1, });
-  };
-
-
+  //! NEW
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state; 
-    // console.log(event); //!
-    // console.log("this.props.contacts: ", this.props.contacts); //!
-
-    // console.log(this.state); //!
-    // console.log(this.state.contacts); //!
-
-    // this.state.contacts.push(this.state.name);
-
-    // const contactsObj = { name: this.state.name, id: nanoid() }
-    // console.log(contactsObj); //!
-
-    //! принимаем props от ContactForm contacts={contacts} из App
-    const contacts = this.props.contacts
-    // this.state.contacts.push({ name: this.state.name, id: nanoid() });
-
-    //! alert с предупреждением о наявности контакта
-    // console.log("contacts[0]: ", contacts[0]); //!
-    if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
-      // console.log("if name:", name); //!
-        alert(`${name} is already in contacts.`);
-        return;
-    } else {
-      // console.log("else name:", name); //!
-      // contacts.push({ id: nanoid(), name: name, number: number, });
-      this.OnPush(name, number);
-      //! записываю contacts в хранилище localStorage 2-ой вариант:
-      // localStorage.setItem('contacts', JSON.stringify(contacts));
-      }
-    
-    this.props.onSubmit(this.state, this.props.contacts);
-    
-    // console.log("contacts[0].name: ", contacts[0].name); //!
-
+    this.props.onSubmit(name, number);
     this.reset();
   };
+
+
+  
+  // OnPush = (name1, number1) => {
+  //   this.props.contacts.push({ id: nanoid(), name: name1, number: number1, });
+  // };
+
+
+  //! old handleSubmit
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   const { name, number } = this.state; 
+  //   // console.log(event); //!
+  //   // console.log("this.props.contacts: ", this.props.contacts); //!
+
+  //   // console.log(this.state); //!
+  //   // console.log(this.state.contacts); //!
+
+  //   // this.state.contacts.push(this.state.name);
+
+  //   // const contactsObj = { name: this.state.name, id: nanoid() }
+  //   // console.log(contactsObj); //!
+
+  //   //! принимаем props от ContactForm contacts={contacts} из App
+  //   const contacts = this.props.contacts
+  //   // this.state.contacts.push({ name: this.state.name, id: nanoid() });
+
+  //   //! alert с предупреждением о наявности контакта
+  //   // console.log("contacts[0]: ", contacts[0]); //!
+  //   if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
+  //     // console.log("if name:", name); //!
+  //       alert(`${name} is already in contacts.`);
+  //       return;
+  //   } else {
+  //     // console.log("else name:", name); //!
+  //     // contacts.push({ id: nanoid(), name: name, number: number, });
+  //     this.OnPush(name, number);
+  //     //! записываю contacts в хранилище localStorage 2-ой вариант:
+  //     // localStorage.setItem('contacts', JSON.stringify(contacts));
+  //     }
+    
+  //   this.props.onSubmit(this.state, this.props.contacts);
+    
+  //   // console.log("contacts[0].name: ", contacts[0].name); //!
+
+  //   this.reset();
+  // };
 
 
 // * +++++++++++++++++++++++++++ RENDER ++++++++++++++++++++++++++++++++++
