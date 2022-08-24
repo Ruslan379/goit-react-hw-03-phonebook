@@ -38,14 +38,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+//! alert с предупреждением о наявности контакта
+
 //! old --------------------------------------------
 
 //! old formSubmitHandler
 
 //! old handleSubmit
 
+//! Добавление контакта в this.state.contacts
+
 //! Обновление state.contacts - ВАЖНО!!!
 
-//! записываю contacts в хранилище localStorage 2-ой вариант:
+//! записываю contacts в хранилище localStorage:
 
 //! перенесен в ContactForm
