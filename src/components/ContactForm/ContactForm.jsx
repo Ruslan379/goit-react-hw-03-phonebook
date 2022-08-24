@@ -89,8 +89,8 @@ export class ContactForm extends Component {
   };
 
 
-  
-  // OnPush = (name1, number1) => {
+
+  // onPush = (name1, number1) => {
   //   this.props.contacts.push({ id: nanoid(), name: name1, number: number1, });
   // };
 
@@ -123,7 +123,7 @@ export class ContactForm extends Component {
   //   } else {
   //     // console.log("else name:", name); //!
   //     // contacts.push({ id: nanoid(), name: name, number: number, });
-  //     this.OnPush(name, number);
+  //     this.onPush(name, number);
   //     //! записываю contacts в хранилище localStorage 2-ой вариант:
   //     // localStorage.setItem('contacts', JSON.stringify(contacts));
   //     }

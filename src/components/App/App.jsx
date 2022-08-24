@@ -77,48 +77,77 @@ export class App extends Component {
 
     if (nextContacts !== prevContacts) {
       // console.log('Обновилось App поле contacts, записываю contacts в хранилище'); //!
-      localStorage.setItem('contacts', JSON.stringify(nextContacts));
+      //! записываю contacts в хранилище localStorage:
+      // localStorage.setItem('contacts', JSON.stringify(nextContacts));
+      this.saveLocalStorage(nextContacts);
     }
   }
 
 
 
-  OnPush = (name, number) => {
+  //! Добавление контакта в this.state.contacts
+  onPush = (name, number) => {
     this.state.contacts.push({ id: nanoid(), name, number });
   };
 
 
+  
+  //! Запись contacts в localStorage
+  saveLocalStorage = (contacts) => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  };
 
-  //! NEW
+
+  //! alert с предупреждением о наявности контакта
+  alertInputContact = (name, number) => {
+    const contacts = this.state.contacts 
+    
+    if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
+        alert(`${name} is already in contacts.`);
+        return;
+    } else {
+      this.setState({ contacts }); //! Обновление state.contacts - ВАЖНО!!!
+      this.onPush(name, number); 
+      //! записываю contacts в хранилище localStorage:
+      // localStorage.setItem('contacts', JSON.stringify(contacts));
+      this.saveLocalStorage(contacts);
+      }
+  };
+
+
+  
+  //! NEW - передача пропсов name и number из ContactForm
   formSubmitHandler = (name, number) => {
     // console.log("name: ", name); //!
     // console.log("number: ", number); //!
     // this.setState({ name, number }); //! НЕ ЗДЕСЬ, ДАЛЬШЕ!!!
     // console.log("state ДО: ", this.state); //!
 
-    const contacts = this.state.contacts 
-    // console.log("contacts ДО: ", contacts); //!
+    //! alert с предупреждением о наявности контакта
+    this.alertInputContact(name, number)
+    // const contacts = this.state.contacts 
+    // // console.log("contacts ДО: ", contacts); //!
     
-    if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
-        alert(`${name} is already in contacts.`);
-        return;
-    } else {
-      // this.setState({ name, number }); 
-      this.setState({ contacts }); //! Обновление state.contacts - ВАЖНО!!!
-      this.OnPush(name, number); 
-      //! записываю contacts в хранилище localStorage 2-ой вариант:
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-      }
+    // if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
+    //     alert(`${name} is already in contacts.`);
+    //     return;
+    // } else {
+    //   // this.setState({ name, number }); 
+    //   this.setState({ contacts }); //! Обновление state.contacts - ВАЖНО!!!
+    //   this.OnPush(name, number); 
+    //   //! записываю contacts в хранилище localStorage:
+    //   localStorage.setItem('contacts', JSON.stringify(contacts));
+    //   }
   };
 
 
-
+  //! запись значения из input-(Find contacts by name) в this.setState.filter
   changeFilter = (event) => {
     this.setState({ filter: event.currentTarget.value });
   };
 
 
-
+  //! Создание нового массива объектов из this.state.contacts с учетом значения поиска из this.state.filter
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
@@ -129,7 +158,7 @@ export class App extends Component {
   };
 
 
-
+  //! Создание нового массива объектов из this.state.contacts с учетом удаления контакта по его contact.id
   deleteTodo = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
