@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 // import shortid from 'shortid';
 
-
 import { Container } from 'components/Container/Container';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
