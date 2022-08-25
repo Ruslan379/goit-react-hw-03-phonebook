@@ -44,11 +44,9 @@
 
 //! old formSubmitHandler
 
-//! old handleSubmit
+//! Ввод значений в поля инпутов
 
 //! Добавление контакта в this.state.contacts
-
-//! Обновление state.contacts - ВАЖНО!!!
 
 //! записываю contacts в хранилище localStorage:
 
