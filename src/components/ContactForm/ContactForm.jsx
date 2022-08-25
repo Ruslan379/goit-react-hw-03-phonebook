@@ -46,16 +46,16 @@ export class ContactForm extends Component {
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('ContactForm componentDidUpdate'); //!
-    // console.log("ContactForm prevProps: ", prevProps); //!
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('ContactForm componentDidUpdate'); //!
+  //   console.log("ContactForm prevProps: ", prevProps); //!
 
-    // const ContactFormPrevState = prevState;
-    // console.log("ContactForm PrevState: ", ContactFormPrevState); //!
+  //   const ContactFormPrevState = prevState;
+  //   console.log("ContactForm PrevState: ", ContactFormPrevState); //!
 
-    // const ContactFormNextState = this.state;
-    // console.log("ContactForm NextState: ", ContactFormNextState); //!
-  }
+  //   const ContactFormNextState = this.state;
+  //   console.log("ContactForm NextState: ", ContactFormNextState); //!
+  // }
 
 
   //! Ввод значений в поля инпутов

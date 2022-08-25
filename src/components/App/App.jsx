@@ -48,7 +48,7 @@ export class App extends Component {
 
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
-  //! перенесен в ContactForm
+  //? перенесен в ContactForm
   // contactInputId = nanoid();
 
 
@@ -81,8 +81,8 @@ export class App extends Component {
     const nextContacts = this.state.contacts;
     // console.log("App nextContacts: ", nextContacts); //!
 
-    // console.log(nextContacts === parsedContacts); //! false - так НЕ РАБОТАЕТ!!!
-    // console.log(nextContacts.length === parsedContacts.length); //! true так НЕ РАБОТАЕТ!!!
+    // console.log(nextContacts === parsedContacts); //? false - так НЕ РАБОТАЕТ!!!
+    // console.log(nextContacts.length === parsedContacts.length); //? true так НЕ РАБОТАЕТ!!!
     
 
     // if (nextContacts !== prevContacts && nextContacts !== parsedContacts) {
@@ -95,6 +95,12 @@ export class App extends Component {
   }
 
 
+  //! Запись contacts в localStorage
+  saveLocalStorage = (contacts) => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  };
+
+
 
   //! Добавление контакта в this.state.contacts
   addСontact = (name, number) => {
@@ -103,12 +109,6 @@ export class App extends Component {
     // this.setState({ contacts: [this.state.contacts.push({ id: nanoid(), name, number })] }); //! Так НЕ РАБОТАЕТ!!!
   };
 
-
-  
-  //! Запись contacts в localStorage
-  saveLocalStorage = (contacts) => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  };
 
 
   //! alert с предупреждением о наявности контакта
@@ -160,6 +160,7 @@ export class App extends Component {
   };
 
 
+
   //! Создание нового массива объектов из this.state.contacts с учетом значения поиска из this.state.filter
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
@@ -171,6 +172,7 @@ export class App extends Component {
   };
 
 
+
   //! Создание нового массива объектов из this.state.contacts с учетом удаления контакта по его contact.id
   deleteTodo = contactId => {
     this.setState(prevState => ({
@@ -180,7 +182,7 @@ export class App extends Component {
 
 
 
-  //! old formSubmitHandler
+  //? old formSubmitHandler
   // formSubmitHandler = (newState = {}, newContacts) => {
   //   // console.log("newState: ", newState); //!
   //   // console.log("newContacts: ", newContacts); //!
@@ -191,7 +193,7 @@ export class App extends Component {
   //   //   contacts: prevState.contacts.push({id: 'id-5', name: 'Ruslan Fate', number: '777-77-77'}),
   //   // }));
 
-  //   //! Обновление state.contacts - ВАЖНО!!!
+  //   // Обновление state.contacts - ВАЖНО!!!
   //   this.setState({ contacts: newContacts });
 
   //   // this.setState(function (prevState, props) {
@@ -206,14 +208,12 @@ export class App extends Component {
   //   //   };
   //   // });
 
-  //   //! записываю contacts в хранилище localStorage 1-ый вариант:
+  //   // записываю contacts в хранилище localStorage 1-ый вариант:
   //   localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   // };
 
 
-
-
-  //! перенесен в ContactForm
+  //? перенесен в ContactForm
   // handleChange = event => {
   //   // console.log(event.currentTarget); //!
   //   // console.log(event.currentTarget.name); //!
@@ -227,17 +227,13 @@ export class App extends Component {
   // };
 
 
-
-
-  //! перенесен в ContactForm
+  //? перенесен в ContactForm
   // reset = () => {
   //   this.setState({ name: '', number: '' });
   // };
 
 
-
-
-  //! перенесен в ContactForm
+  //? перенесен в ContactForm
   // handleSubmit = event => {
   //   event.preventDefault();
   //   const { contacts, name, number } = this.state;
