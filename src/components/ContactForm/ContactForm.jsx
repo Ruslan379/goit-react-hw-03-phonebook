@@ -74,7 +74,7 @@ export class ContactForm extends Component {
     // if (value.trim() === '') {
     //   console.log(value);
     //   // alert('Введите имя');
-    //   toast.error('Введите имя'); //! НЕ РАБОТАЕТ!!!
+    //   toast.error('Введите имя'); //? РАБОТАЕТ, но НЕ ПРАВИЛЬНО!!!
     //   return;
     // }
 
@@ -95,9 +95,9 @@ export class ContactForm extends Component {
     const { name, number } = this.state; 
 
 
-    // if (name.trim() === '') {
+    // if (name.trim() === '' || number.trim() === '') {
     //   // alert('Введите имя');
-    //   toast('Введите имя'); //! НЕ РАБОТАЕТ!!!
+    //   toast.info('Введите имя'); //? НЕ РАБОТАЕТ!!!
     //   return;
     // };
 

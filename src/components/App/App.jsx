@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { ToastContainer } from 'react-toastify';
-// import { toast } from 'react-toastify';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import { nanoid } from 'nanoid';
 // import shortid from 'shortid';
@@ -127,7 +129,7 @@ export class App extends Component {
     
     if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
       alert(`${name} is already in contacts.`);
-      // toast.error(`${name} is already in contacts.`); //! НЕ РАБОТАЕТ!!!
+      toast.warning(`${name} is already in contacts.`); //* РАБОТАЕТ!!!
       return;
     } else {
       // this.setState({ contacts }); // Обновление state.contacts - Уже НЕ НАДО!!!
@@ -285,7 +287,7 @@ export class App extends Component {
 // * +++++++++++++++++++++++++++ MARKUP ++++++++++++++++++++++++++++++++++
     return (
       <Container>
-        {/* <ToastContainer autoClose={3000} /> */}
+        <ToastContainer autoClose={1000} />
 
         <h1>Phonebook</h1>
 
