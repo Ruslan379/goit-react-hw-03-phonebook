@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import { ToastContainer } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import { nanoid } from 'nanoid';
 // import shortid from 'shortid';
@@ -108,7 +110,7 @@ export class App extends Component {
       name,
       number,
     };
-    console.log(contact); //!
+    // console.log(contact); //!
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
@@ -124,8 +126,9 @@ export class App extends Component {
     const contacts = this.state.contacts 
     
     if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
-        alert(`${name} is already in contacts.`);
-        return;
+      alert(`${name} is already in contacts.`);
+      // toast.error(`${name} is already in contacts.`); //! НЕ РАБОТАЕТ!!!
+      return;
     } else {
       // this.setState({ contacts }); // Обновление state.contacts - Уже НЕ НАДО!!!
       this.addСontact(name, number); 
@@ -282,6 +285,7 @@ export class App extends Component {
 // * +++++++++++++++++++++++++++ MARKUP ++++++++++++++++++++++++++++++++++
     return (
       <Container>
+        {/* <ToastContainer autoClose={3000} /> */}
 
         <h1>Phonebook</h1>
 

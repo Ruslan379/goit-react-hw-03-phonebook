@@ -10,7 +10,6 @@ import css from 'components/Filter/Filter.module.css' //todo = старый ва
 export const Filter = ({ value, onChange }) => (
   <label className={css.FilterLabel}>
     Find contacts by name
-    
     <input
       className={css.FilterInput}
       type="text"

@@ -64,8 +64,8 @@ export class ContactForm extends Component {
     // console.log(event.currentTarget.name); //!
     // console.log(event.currentTarget.value); //!
 
-    // this.setState({ name: event.currentTarget.value });
-    // this.setState({ [event.currentTarget.name]: event.currentTarget.value });
+    // this.setState({ name: event.currentTarget.value }); //?
+    // this.setState({ [event.currentTarget.name]: event.currentTarget.value }); //?
 
     const { name, value } = event.currentTarget;
     
@@ -155,10 +155,13 @@ export class ContactForm extends Component {
           className={css.Form}
           onSubmit={this.handleSubmit}>
 
-          <label htmlFor={this.contactInputId}>
+        <label
+          className={css.FormLabel}
+          htmlFor={this.contactInputId}>
             Name
             <br />
             <input
+              className={css.FormInput}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -171,10 +174,13 @@ export class ContactForm extends Component {
           </label>
           <br />
 
-          <label htmlFor={this.contactInputId}>
+        <label
+          className={css.FormLabel}
+          htmlFor={this.contactInputId}>
             Number
             <br />
             <input
+              className={css.FormInput}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

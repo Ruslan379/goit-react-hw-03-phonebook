@@ -17,7 +17,16 @@
     background-color: #d6fdcc;
 }
 
+.FormLabel {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
 
+    font-size: 18px;
+    font-weight: 500;
+    color: #003816;
+
+}
 
 .FormBtn {
     border: none;
@@ -41,4 +50,10 @@
 .FormBtn:hover,
 .FormBtn:focus {
     background-color: #00aa44;
+}
+
+
+.FormInput {
+    font-weight: 600;
+    color: #aa0202;
 }
