@@ -46,19 +46,19 @@ export class ContactForm extends Component {
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('ContactForm componentDidUpdate'); //!
-  //   console.log("ContactForm prevProps: ", prevProps); //!
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('ContactForm componentDidUpdate'); //!
+    // console.log("ContactForm prevProps: ", prevProps); //!
 
-  //   const ContactFormPrevState = prevState;
-  //   console.log("ContactForm PrevState: ", ContactFormPrevState); //!
+    // const ContactFormPrevState = prevState;
+    // console.log("ContactForm PrevState: ", ContactFormPrevState); //!
 
-  //   const ContactFormNextState = this.state;
-  //   console.log("ContactForm NextState: ", ContactFormNextState); //!
-  // }
+    // const ContactFormNextState = this.state;
+    // console.log("ContactForm NextState: ", ContactFormNextState); //!
+  }
 
 
-
+  //! Ввод значений в поля инпутов
   handleChange = event => {
     // console.log(event.currentTarget); //!
     // console.log(event.currentTarget.name); //!
@@ -73,14 +73,14 @@ export class ContactForm extends Component {
   };
 
 
-
+  //! Очистка полей ФОРМЫ
   reset = () => {
     this.setState({ name: '', number: '' });
   };
 
 
 
-  //! NEW
+  //! NEW - Submit ФОРМЫ
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state; 
@@ -90,12 +90,15 @@ export class ContactForm extends Component {
 
 
 
-  // onPush = (name1, number1) => {
-  //   this.props.contacts.push({ id: nanoid(), name: name1, number: number1, });
+  // //? Добавление контакта в this.state.contacts
+  // addСontact = (name, number) => {
+  //   this.setState({ contacts: [ ...this.state.contacts, { id: nanoid(), name, number }  ] }) //* Так ПРАВИЛЬНО!!!
+  //   // this.state.contacts.push({ id: nanoid(), name, number }); //? Так Работает, но НЕЛЬЗЯ!!!
+  //   // this.setState({ contacts: [this.state.contacts.push({ id: nanoid(), name, number })] }); //! Так НЕ РАБОТАЕТ!!!
   // };
 
 
-  //! old handleSubmit
+  //? old - Submit ФОРМЫ
   // handleSubmit = event => {
   //   event.preventDefault();
   //   const { name, number } = this.state; 
@@ -110,11 +113,11 @@ export class ContactForm extends Component {
   //   // const contactsObj = { name: this.state.name, id: nanoid() }
   //   // console.log(contactsObj); //!
 
-  //   //! принимаем props от ContactForm contacts={contacts} из App
+  //   //? принимаем props от ContactForm contacts={contacts} из App
   //   const contacts = this.props.contacts
   //   // this.state.contacts.push({ name: this.state.name, id: nanoid() });
 
-  //   //! alert с предупреждением о наявности контакта
+  //   //? alert с предупреждением о наявности контакта
   //   // console.log("contacts[0]: ", contacts[0]); //!
   //   if (contacts.find(item => item.name.toLowerCase() === name.toLowerCase())) {
   //     // console.log("if name:", name); //!
@@ -123,8 +126,8 @@ export class ContactForm extends Component {
   //   } else {
   //     // console.log("else name:", name); //!
   //     // contacts.push({ id: nanoid(), name: name, number: number, });
-  //     this.onPush(name, number);
-  //     //! записываю contacts в хранилище localStorage 2-ой вариант:
+  //     this.addСontact(name, number);
+  //     //? записываю contacts в хранилище localStorage 2-ой вариант:
   //     // localStorage.setItem('contacts', JSON.stringify(contacts));
   //     }
     

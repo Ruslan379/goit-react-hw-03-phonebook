@@ -57,6 +57,7 @@ export class App extends Component {
 
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
+    // console.log("DidMount parsedContacts: ", parsedContacts); //!
 
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
@@ -69,12 +70,22 @@ export class App extends Component {
     // console.log('App componentDidUpdate'); //!
     // console.log("App prevProps: ", prevProps); //!
 
+    // const contacts = localStorage.getItem('contacts'); //?
+    // const parsedContacts = JSON.parse(contacts); //?
+    // console.log("DidUpdate parsedContacts: ", parsedContacts); //!
+
+
     const prevContacts = prevState.contacts;
     // console.log("App prevContacts: ", prevContacts); //!
 
     const nextContacts = this.state.contacts;
     // console.log("App nextContacts: ", nextContacts); //!
 
+    // console.log(nextContacts === parsedContacts); //! false - так НЕ РАБОТАЕТ!!!
+    // console.log(nextContacts.length === parsedContacts.length); //! true так НЕ РАБОТАЕТ!!!
+    
+
+    // if (nextContacts !== prevContacts && nextContacts !== parsedContacts) {
     if (nextContacts !== prevContacts) {
       // console.log('Обновилось App поле contacts, записываю contacts в хранилище'); //!
       //! записываю contacts в хранилище localStorage:
@@ -86,8 +97,10 @@ export class App extends Component {
 
 
   //! Добавление контакта в this.state.contacts
-  onPush = (name, number) => {
-    this.state.contacts.push({ id: nanoid(), name, number });
+  addСontact = (name, number) => {
+    this.setState({ contacts: [ ...this.state.contacts, { id: nanoid(), name, number }  ] }) //* Так ПРАВИЛЬНО!!!
+    // this.state.contacts.push({ id: nanoid(), name, number }); //? Так Работает, но НЕЛЬЗЯ!!!
+    // this.setState({ contacts: [this.state.contacts.push({ id: nanoid(), name, number })] }); //! Так НЕ РАБОТАЕТ!!!
   };
 
 
@@ -106,11 +119,11 @@ export class App extends Component {
         alert(`${name} is already in contacts.`);
         return;
     } else {
-      this.setState({ contacts }); //! Обновление state.contacts - ВАЖНО!!!
-      this.onPush(name, number); 
-      //! записываю contacts в хранилище localStorage:
+      // this.setState({ contacts }); // Обновление state.contacts - Уже НЕ НАДО!!!
+      this.addСontact(name, number); 
+      // записываю contacts в хранилище localStorage: ==>  НЕ ЗДЕСЬ, в componentDidUpdate!!!
       // localStorage.setItem('contacts', JSON.stringify(contacts));
-      this.saveLocalStorage(contacts);
+      // this.saveLocalStorage(contacts);
       }
   };
 
@@ -120,7 +133,7 @@ export class App extends Component {
   formSubmitHandler = (name, number) => {
     // console.log("name: ", name); //!
     // console.log("number: ", number); //!
-    // this.setState({ name, number }); //! НЕ ЗДЕСЬ, ДАЛЬШЕ!!!
+    // this.setState({ name, number }); //? 
     // console.log("state ДО: ", this.state); //!
 
     //! alert с предупреждением о наявности контакта
@@ -133,9 +146,9 @@ export class App extends Component {
     //     return;
     // } else {
     //   // this.setState({ name, number }); 
-    //   this.setState({ contacts }); //! Обновление state.contacts - ВАЖНО!!!
-    //   this.OnPush(name, number); 
-    //   //! записываю contacts в хранилище localStorage:
+    // // this.setState({ contacts }); //? Обновление state.contacts - Уже НЕ НАДО!!!
+    //   this.addСontact(name, number); 
+    //   //? записываю contacts в хранилище localStorage:
     //   localStorage.setItem('contacts', JSON.stringify(contacts));
     //   }
   };
