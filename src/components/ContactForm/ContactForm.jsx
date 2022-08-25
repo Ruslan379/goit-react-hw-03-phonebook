@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import { toast } from 'react-toastify';
 
 import { nanoid } from 'nanoid';
 // import shortid from 'shortid';
@@ -67,8 +68,16 @@ export class ContactForm extends Component {
     // this.setState({ name: event.currentTarget.value }); //?
     // this.setState({ [event.currentTarget.name]: event.currentTarget.value }); //?
 
-    const { name, value } = event.currentTarget;
     
+    const { name, value } = event.currentTarget;
+
+    // if (value.trim() === '') {
+    //   console.log(value);
+    //   // alert('Введите имя');
+    //   toast.error('Введите имя'); //! НЕ РАБОТАЕТ!!!
+    //   return;
+    // }
+
       this.setState({ [name]: value });
   };
 
@@ -84,6 +93,14 @@ export class ContactForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state; 
+
+
+    // if (name.trim() === '') {
+    //   // alert('Введите имя');
+    //   toast('Введите имя'); //! НЕ РАБОТАЕТ!!!
+    //   return;
+    // };
+
     this.props.onSubmit(name, number);
     this.reset();
   };
