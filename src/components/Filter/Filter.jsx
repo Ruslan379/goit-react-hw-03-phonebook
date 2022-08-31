@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import 'components/Filter/Filter.css';
-import css from 'components/Filter/Filter.module.css' //todo = старый вариант импорта стилей
+import css from 'components/Filter/Filter.module.css' 
 
 
 
@@ -25,6 +24,3 @@ Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-
-
-// export default Filter;

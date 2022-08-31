@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import classNames from 'classnames';
-
-// import 'components/ContactList/ContactList.css';
-import css from 'components/ContactList/ContactList.module.css' //todo = старый вариант импорта стилей
+import css from 'components/ContactList/ContactList.module.css' 
 
 
 
@@ -42,5 +39,3 @@ ContactList.propTypes = {
 };
 
 
-
-// export default Filter;
