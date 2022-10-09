@@ -100,7 +100,7 @@ export class App extends Component {
 
 
   //! Создание нового массива объектов из this.state.contacts с учетом удаления контакта по его contact.id
-  deleteTodo = contactId => {
+  deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
@@ -129,15 +129,19 @@ export class App extends Component {
         <h2>Contacts</h2>
         <p>Total: {totalContacts}</p>
 
-        <Filter
+        {contacts.length > 0 &&
+          (<Filter
           value={filter}
           onChange={this.changeFilter}
-        />
+          />
+        )}
         
-        <ContactList
+        {contacts.length > 0 &&
+          (<ContactList
           visibleContacts={visibleContacts}
-          onDeleteTodo={this.deleteTodo}
-        />
+          onDeleteContact ={this.deleteContact}
+          />
+        )}
 
       </Container>
     );

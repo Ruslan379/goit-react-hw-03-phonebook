@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { nanoid } from 'nanoid';
-
-import css from 'components/ContactForm/ContactForm.module.css' //todo = старый вариант импорта стилей
+import css from 'components/ContactForm/ContactForm.module.css' 
 
 
 
@@ -11,14 +9,15 @@ import css from 'components/ContactForm/ContactForm.module.css' //todo = ста�
 // * +++++++++++++++++++++++++++ CLASS ++++++++++++++++++++++++++++++++++
 
 export class ContactForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: ''
   };
 
-
-  contactInputId = nanoid();
-  
 
 // * +++++++++++++++++++++++++++ МЕТОДЫ ++++++++++++++++++++++++++++++++++
   //! Ввод значений в поля инпутов
@@ -57,9 +56,7 @@ export class ContactForm extends Component {
           className={css.Form}
           onSubmit={this.handleSubmit}>
 
-        <label
-          className={css.FormLabel}
-          htmlFor={this.contactInputId}>
+        <label className={css.FormLabel}>
             Name
             <br />
             <input
@@ -71,14 +68,11 @@ export class ContactForm extends Component {
               required
               value={name}
               onChange={this.handleChange}
-              id={this.contactInputId}
             />
           </label>
           <br />
 
-        <label
-          className={css.FormLabel}
-          htmlFor={this.contactInputId}>
+        <label className={css.FormLabel}>
             Number
             <br />
             <input
@@ -90,7 +84,6 @@ export class ContactForm extends Component {
               required
               value={number}
               onChange={this.handleChange}
-              id={this.contactInputId}
             />
           </label>
           <br />
@@ -105,6 +98,6 @@ export class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
